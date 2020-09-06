@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1599429984 source:d:\federico\documents\progra i\calculator\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1599429414 source:d:\federico\documents\progra i\calculator\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1599429414 d:\federico\documents\progra i\calculator\funciones.h
+
