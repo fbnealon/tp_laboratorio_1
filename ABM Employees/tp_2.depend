@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1601423464 source:d:\federico\documents\progra i\tp_2\main.c
+	"ArrayEmployees.h"
+
+1601401273 d:\federico\documents\progra i\tp_2\arrayemployees.h
+	"menu.h"
+	"getfunctions.h"
+
+1601423384 source:d:\federico\documents\progra i\tp_2\arrayemployees.c
+	"ArrayEmployees.h"
+
+1601422797 source:d:\federico\documents\progra i\tp_2\menu.c
+	"menu.h"
+
+1601421988 d:\federico\documents\progra i\tp_2\menu.h
+	"getfunctions.h"
+
+1601337988 d:\federico\documents\progra i\tp_2\getfunctions.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1601337988 source:d:\federico\documents\progra i\tp_2\getfunctions.c
+	"getfunctions.h"
+
