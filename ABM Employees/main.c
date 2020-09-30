@@ -8,6 +8,7 @@ int main()
     int nextID = 1000, auxID;
     int rta;
     int opcion;
+    char confirm = 'n';
     do
     {
         system("cls");
@@ -18,14 +19,19 @@ int main()
         case 1:
             system("cls");
             printf("****************************************ALTA DE NUEVO EMPLEADO****************************************\n\n\n");
-            if(addEmployee(listaEmpleados, SIZE, nextID)==0)
+            rta= addEmployee(listaEmpleados, SIZE, nextID);
+            if(rta==0)
             {
                 nextID++;
                 printf("Alta exitosa!!\n\n");
             }
-            else
+            else if(rta==1)
             {
                 printf("No se pudo realizar el alta...\n\n");
+            }
+            else
+            {
+                printf("Hubo problemas\n\n");
             }
             break;
         case 2:
@@ -95,25 +101,37 @@ int main()
         case 4:
             system("cls");
             printf("****************************************REPORTES****************************************\n\n\n");
-            printEmployees(listaEmpleados, SIZE);
-            if(reportInformation(listaEmpleados, SIZE)==-1)
+            rta = findOccupiedSlot(listaEmpleados, SIZE);
+            if(rta==2)
             {
                 printf("Hubo problemas\n\n");
             }
+            else if(rta==1)
+            {
+                printf("No hay empleados cargados en la nomina todavia\n\n");
+            }
             else
             {
-                printf("Reportes finalizados\n\n");
+                if(reportInformation(listaEmpleados, SIZE)==-1)
+                {
+                    printf("Hubo problemas\n\n");
+                }
+                else
+                {
+                    printf("\nReportes finalizados\n\n");
+                }
             }
             break;
         case 5:
             system("cls");
-            printf("****************************************\n****************************************\n************Saliendo del ABM************\n****************************************\n****************************************\n\n\n");
+            printf("****************************************SALIR****************************************\n\n\n");
+            confirm = getLetter("Desea salir?: ", "Caracter invalido, intente de nuevo: ");
             break;
         default:
             printf("Por favor ingrese una opcion correcta\n");
             break;
         }
         system("pause");
-    }while(opcion != 5);
+    }while(confirm != 's');
     return 0;
 }

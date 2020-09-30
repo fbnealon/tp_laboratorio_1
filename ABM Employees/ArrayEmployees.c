@@ -11,7 +11,7 @@ int initEmployees(eEmployee employeeList[], int len)
 
 int addEmployee(eEmployee employeeList[], int len, int id)
 {
-    int index, error=1;
+    int index, error=2;
     eEmployee newEmployee;
     if(employeeList != NULL && len>0 && id>0)
     {
@@ -25,6 +25,7 @@ int addEmployee(eEmployee employeeList[], int len, int id)
         else
         {
             printf("La nomina de empleados esta completa.\n");
+            error=1;
         }
     }
 
@@ -107,15 +108,20 @@ int removeEmployee(eEmployee employeeList[], int len, int id) //0 BAJA CORRECTA,
 
 int printEmployees(eEmployee employeeList[], int len)
 {
-    printf("%4s    %20s    %20s    %6s    %9s\n\n", "ID", "Apellido", "Nombre", "Sector", "Salario");
-    for(int i=0; i<len; i++)
+    int error=-1;
+    if(employeeList != NULL && len>0)
     {
-        if(employeeList[i].isEmpty == OCCUPIED)
+       printf("%4s    %20s    %20s    %6s    %9s\n\n", "ID", "Apellido", "Nombre", "Sector", "Salario");
+        for(int i=0; i<len; i++)
         {
-            printAnEmployee(employeeList[i]);
+            if(employeeList[i].isEmpty == OCCUPIED)
+            {
+                printAnEmployee(employeeList[i]);
+            }
         }
+        error=0;
     }
-    return 0;
+    return error;
 }
 
 void printAnEmployee(eEmployee anEmployee)
@@ -139,7 +145,6 @@ eEmployee changeField(eEmployee anEmployee)
         switch(option)
         {
             case 'a':
-                fflush(stdin);
                 getStrings("Ingrese el nuevo nombre: ", "Demasiado largo, intente de nuevo: ", NAMES, auxEmployee.name);
                 printf("Esta seguro de cambiar el nombre del empleado a %s?: ", auxEmployee.name);
                 fflush(stdin);
@@ -155,7 +160,6 @@ eEmployee changeField(eEmployee anEmployee)
                 }
                 break;
             case 'b':
-                fflush(stdin);
                 getStrings("Ingrese el nuevo apellido: ", "Demasiado largo, intente de nuevo: ", NAMES, auxEmployee.lastName);
                 printf("Esta seguro de cambiar el apellido del empleado a %s?: ", auxEmployee.lastName);
                 fflush(stdin);
@@ -213,7 +217,7 @@ eEmployee changeField(eEmployee anEmployee)
     return anEmployee;
 }
 
-int modifyEmployee(eEmployee employeeList[], int len, int id) //2HUBO PROBLEMAS 1NO HAY EMPLEADO CON ID INGRESADO 0MODIFICACIONES SIN PROBLEMAS
+int modifyEmployee(eEmployee employeeList[], int len, int id)
 {
     int error=2;
     int index;
@@ -309,48 +313,25 @@ int sortEmployees(eEmployee employeeList[], int len, int order)
 {
     int error=-1;
     eEmployee auxEmployee;
-    int i,j;
-    if(employeeList != NULL && len>0)
+    if(employeeList != NULL && len>0 && (order==0 || order==1))
     {
-        if(order==0)
+        for(int i=0; i<len-1; i++)
         {
-            for(i=0; i<len-1; i++)
+            for(int j=i+1; j<len;j++)
             {
-                for(j=i+1; j<len;j++)
+                if(order == 0 && (employeeList[i].sector > employeeList[j].sector ||
+                                  (employeeList[i].sector == employeeList[j].sector && stricmp(employeeList[i].lastName, employeeList[j].lastName)>0)))
                 {
-                    if(stricmp(employeeList[i].lastName, employeeList[j].lastName)>0)
-                    {
-                        auxEmployee=employeeList[i];
-                        employeeList[i]=employeeList[j];
-                        employeeList[j]=auxEmployee;
-                    }
-                    else if(stricmp(employeeList[i].lastName, employeeList[j].lastName)==0 && employeeList[i].sector > employeeList[j].sector)
-                    {
-                        auxEmployee = employeeList[i];
-                        employeeList[i] = employeeList[j];
-                        employeeList[j] = auxEmployee;
-                    }
+                    auxEmployee=employeeList[i];
+                    employeeList[i]=employeeList[j];
+                    employeeList[j]=auxEmployee;
                 }
-            }
-        }
-        else if(order==1)
-        {
-            for(i=0; i<len-1; i++)
-            {
-                for(j=i+1; j<len;j++)
+                else if(order == 1 && (employeeList[i].sector < employeeList[j].sector ||
+                                        (employeeList[i].sector == employeeList[j].sector && stricmp(employeeList[i].lastName, employeeList[j].lastName)<0)))
                 {
-                    if(stricmp(employeeList[j].lastName, employeeList[i].lastName)>0)
-                    {
-                        auxEmployee=employeeList[j];
-                        employeeList[j]=employeeList[i];
-                        employeeList[i]=auxEmployee;
-                    }
-                    else if(stricmp(employeeList[j].lastName, employeeList[i].lastName)==0 && employeeList[j].sector > employeeList[i].sector)
-                    {
-                        auxEmployee = employeeList[j];
-                        employeeList[j] = employeeList[i];
-                        employeeList[i] = auxEmployee;
-                    }
+                    auxEmployee = employeeList[i];
+                    employeeList[i] = employeeList[j];
+                    employeeList[j] = auxEmployee;
                 }
             }
         }
