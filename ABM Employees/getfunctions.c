@@ -45,12 +45,6 @@ char getLetter(char message[], char errorMessage[])
     return letter;
 }
 
-float getAverage(float sum, float counter)
-{
-    float average= sum/counter;
-    return average;
-}
-
 void getStrings(char message[], char errorMessage[], int len, char str[])
 {
     char auxStr[100];
@@ -58,7 +52,7 @@ void getStrings(char message[], char errorMessage[], int len, char str[])
     fflush(stdin);
     gets(auxStr);
 
-    while(strlen(auxStr) >= len)
+    while(strlen(auxStr) >= len-1)
     {
         printf("%s", errorMessage);
         fflush(stdin);

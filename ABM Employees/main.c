@@ -96,7 +96,14 @@ int main()
             system("cls");
             printf("****************************************REPORTES****************************************\n\n\n");
             printEmployees(listaEmpleados, SIZE);
-            reportInformation(listaEmpleados, SIZE);
+            if(reportInformation(listaEmpleados, SIZE)==-1)
+            {
+                printf("Hubo problemas\n\n");
+            }
+            else
+            {
+                printf("Reportes finalizados\n\n");
+            }
             break;
         case 5:
             system("cls");

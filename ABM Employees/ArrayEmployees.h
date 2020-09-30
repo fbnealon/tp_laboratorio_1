@@ -42,4 +42,7 @@ eEmployee changeField(eEmployee anEmployee);
 
 int modifyEmployee(eEmployee employeeList[], int len, int id);
 
+int reportInformation(eEmployee employeeList[], int len);
+
+
 #endif // ARRAYEMPLOYEES_H_INCLUDED

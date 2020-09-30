@@ -24,3 +24,28 @@
 1601337988 source:d:\federico\documents\progra i\tp_2\getfunctions.c
 	"getfunctions.h"
 
+1601425217 source:d:\federico\documents\progra i\tp_laboratorio_1\abm employees\arrayemployees.c
+	"ArrayEmployees.h"
+
+1601426689 d:\federico\documents\progra i\tp_laboratorio_1\abm employees\arrayemployees.h
+	"menu.h"
+	"getfunctions.h"
+
+1601426514 d:\federico\documents\progra i\tp_laboratorio_1\abm employees\menu.h
+	"getfunctions.h"
+
+1601426514 d:\federico\documents\progra i\tp_laboratorio_1\abm employees\getfunctions.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1601426514 source:d:\federico\documents\progra i\tp_laboratorio_1\abm employees\getfunctions.c
+	"getfunctions.h"
+
+1601426655 source:d:\federico\documents\progra i\tp_laboratorio_1\abm employees\main.c
+	"ArrayEmployees.h"
+
+1601422797 source:d:\federico\documents\progra i\tp_laboratorio_1\abm employees\menu.c
+	"menu.h"
+
