@@ -22,7 +22,6 @@ int menu(void)
 int sortMenu(void)
 {
     int option;
-    printf("Ordenamiento de empleados\n\n");
     printf("Ordenar por: \n\n");
     printf("1. ID\n");
     printf("2. Nombre\n");

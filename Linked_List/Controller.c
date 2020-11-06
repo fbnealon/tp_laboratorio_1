@@ -22,6 +22,9 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
     FILE* pFile;
     if(path!=NULL && pArrayListEmployee!=NULL)
     {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("------------------------------    CARGA POR TEXTO    ------------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
         pFile=fopen(path, "r");
         if(pFile!=NULL)
         {
@@ -48,6 +51,9 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
     FILE* pFile=fopen(path, "rb");
     if(pFile!=NULL)
     {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("-----------------------------    CARGA POR BINARIO    -----------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
         parser_EmployeeFromBinary(pFile, pArrayListEmployee);
         ok=1;
         fclose(pFile);
@@ -92,7 +98,6 @@ int actualizarId(int id)
 
 /** \brief Alta de empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
@@ -102,22 +107,27 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int ok=0;
     char confirma='n';
     char auxNombre[128];
-    int auxInt;
     int id;
+    int horas;
+    int sueldo;
     Employee* newEmployee=employee_new();
     if(pArrayListEmployee!=NULL)
     {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("-------------------------------    ALTA EMPLEADO    -------------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
+
         obtenerId(&id);
         employee_setId(newEmployee, id);
 
         getStrings("Ingrese el nombre del empleado: ", "Error, intente de nuevo: ", 128, auxNombre);
         employee_setNombre(newEmployee, auxNombre);;
 
-        auxInt=getInt("Ingrese la cantidad de horas trabajadas: ", "Error, intente de nuevo: ", 0, 10000);
-        employee_setHorasTrabajadas(newEmployee, auxInt);
+        horas=getInt("Ingrese la cantidad de horas trabajadas: ", "Error, intente de nuevo: ", 0, 10000);
+        employee_setHorasTrabajadas(newEmployee, horas);
 
-        auxInt=getInt("Ingrese el sueldo del empleado: ", "Error, intente de nuevo: ", 0, 999999);
-        employee_setSueldo(newEmployee, 300000);
+        sueldo=getInt("Ingrese el sueldo del empleado: ", "Error, intente de nuevo: ", 0, 999999);
+        employee_setSueldo(newEmployee, sueldo);
 
         confirma=getLetter("Confirma alta? ", "Caracter invalido, intente de nuevo: ");
         if(confirma=='s')
@@ -139,7 +149,17 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int ok=0;
+    char confirma='n';
+    if(pArrayListEmployee!=NULL)
+    {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("-------------------------------    BAJA EMPLEADO    -------------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
+
+
+    }
+    return ok;
 }
 
 /** \brief Baja de empleado
@@ -184,29 +204,26 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    int ok=-1;
     int option;
-    int x=-5;
     if(pArrayListEmployee!=NULL)
     {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("-------------------------    ORDENAMIENTO DE EMPLEADOS    -------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
         option=sortMenu();
         switch(option)
         {
         case 1:
-            x=ll_sort(pArrayListEmployee, employeeSortById, ASC);
-            printf("X= %d\n", x);
+            ll_sort(pArrayListEmployee, employeeSortById, ASC);
             break;
         case 2:
-            x=ll_sort(pArrayListEmployee, employeeSortByName, ASC);
-            printf("X= %d\n", x);
+            ll_sort(pArrayListEmployee, employeeSortByName, ASC);
             break;
         case 3:
-            x=ll_sort(pArrayListEmployee, employeeSortByWorkHours, ASC);
-            printf("X= %d\n", x);
+            ll_sort(pArrayListEmployee, employeeSortByWorkHours, ASC);
             break;
         case 4:
-            x=ll_sort(pArrayListEmployee, employeeSortBySalary, ASC);
-            printf("X= %d\n", x);
+            ll_sort(pArrayListEmployee, employeeSortBySalary, ASC);
             break;
         case 5:
             printf("Saliendo\n\n");
@@ -215,9 +232,8 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
             printf("Opcion invalida!\n\n");
             break;
         }
-        ok=0;
     }
-    return ok;
+    return option;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
