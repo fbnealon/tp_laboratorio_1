@@ -3,6 +3,9 @@
 int menu(void)
 {
     int option;
+    printf("-----------------------------------------------------------------------------------\n");
+    printf("-------------------------------    ABM EMPLEADOS    -------------------------------\n");
+    printf("-----------------------------------------------------------------------------------\n\n");
     printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
     printf("2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n");
     printf("3. Alta de empleado\n");

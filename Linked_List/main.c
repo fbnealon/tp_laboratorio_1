@@ -63,6 +63,10 @@ int main()
                 {
                     printf("Empleado cargado con exito!\n\n");
                 }
+                else
+                {
+                    printf("No se cargo ningun empleado nuevo\n\n");
+                }
                 break;
             case 4:
                 system("cls");
@@ -87,7 +91,7 @@ int main()
                 }
                 else
                 {
-                    printf("No hay empleados cargados en la nomina!!!\n\n");
+                    printf("\n\nNo hay empleados cargados en la nomina!!!\n\n");
                 }
                 break;
             case 8:

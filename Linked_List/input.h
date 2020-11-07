@@ -57,8 +57,26 @@ void getStrings(char message[], char errorMessage[], int len, char str[]);
 
 void firstUpper(char str[]);
 
+/** \brief Copia en "str" una cadena que solo puede tener espacios y letras
+ *
+ * \param message[] char
+ * \param errorMessage[] char
+ * \param len int
+ * \param str[] char
+ * \return void
+ *
+ */
 void getAlphaString(char message[], char errorMessage[], int len, char str[]);
 
+/** \brief Copia en "nums" una cadena que solo puede ser de numeros
+ *
+ * \param message[] char
+ * \param errorMessage[] char
+ * \param len int
+ * \param nums[] char
+ * \return void
+ *
+ */
 void getNumberString(char message[], char errorMessage[], int len, char nums[]);
 
 #endif // GETFUNCTIONS_H_INCLUDED

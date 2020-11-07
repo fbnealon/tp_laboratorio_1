@@ -164,13 +164,6 @@ int printEmployees(LinkedList* lista)
     return ok;
 }
 
-void printEmployeeText(FILE* pFile, Employee* empleado)
-{
-    if(pFile!=NULL && empleado!=NULL)
-    {
-    }
-}
-
 int employeeSortByName(void* empleadoA, void* empleadoB)
 {
     int ok=0;
