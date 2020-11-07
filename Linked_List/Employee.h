@@ -37,6 +37,6 @@ int employeeSortById(void* empleadoA, void* empleadoB);
 int employeeSortByWorkHours(void* empleadoA, void* empleadoB);
 int employeeSortBySalary(void* empleadoA, void* empleadoB);
 
-int searchEmployee(LinkedList* lista, int id);
+int employee_searchById(LinkedList* lista, int id);
 
 #endif // employee_H_INCLUDED

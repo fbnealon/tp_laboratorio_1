@@ -266,7 +266,7 @@ int employeeSortBySalary(void* empleadoA, void* empleadoB)
     return ok;
 }
 
-int searchEmployee(LinkedList* lista, int id)
+int employee_searchById(LinkedList* lista, int id)
 {
     int index=-1;
     Employee* auxEmployee;

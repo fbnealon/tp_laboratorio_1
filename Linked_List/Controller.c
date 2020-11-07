@@ -156,7 +156,72 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int ok=0;
+    int auxId;
+    int index=-1;
+    char idStr[128];
+    char nombreStr[128];
+    char horasStr[128];
+    char sueldoStr[128];
+    Employee* anEmployee;
+    char confirma='n';
+
+    if(pArrayListEmployee!=NULL)
+    {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("------------------------    MODIFICACIONES DE EMPLEADOS    ------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
+
+        if(printEmployees(pArrayListEmployee))
+        {
+            getNumberString("Ingrese el ID del empleado a modificar: ", "Error, intente de nuevo: ", 128, idStr);
+            auxId=atoi(idStr);
+            index=employee_searchById(pArrayListEmployee, auxId);
+            if(index!=-1)
+            {
+                anEmployee=ll_get(pArrayListEmployee, index);
+                if(anEmployee!=NULL)
+                {
+                    switch(modificationMenu())
+                    {
+                    case 1:
+                        getAlphaString("Ingrese nuevo nombre: ", "Caracteres invalidos, intente de nuevo: ", 128, nombreStr);
+                        confirma=getLetter("Confirma cambio de nombre?: ", "Caracter invalido, intente de nuevo: ");
+                        if(confirma=='s')
+                        {
+                            employee_setNombre(anEmployee, nombreStr);
+
+                        }
+                        break;
+                    case 2:
+                        getNumberString("Ingrese las horas trabajadas: ", "Caracteres invalidos, intente de nuevo: ", 128, horasStr);
+                        confirma=getLetter("Confirma cambio de horas?: ", "Caracter invalido, intente de nuevo: ");
+                        if(confirma=='s')
+                        {
+                            employee_setHorasTrabajadas(anEmployee, atoi(horasStr));
+                        }
+                        break;
+                    case 3:
+                        getNumberString("Ingrese el nuevo sueldo: ", "Caracteres invalidos, intente de nuevo: ", 128, sueldoStr);
+                        confirma=getLetter("Confirma cambio de sueldo?: ", "Caracter invalido, intente de nuevo: ");
+                        if(confirma=='s')
+                        {
+                            employee_setSueldo(anEmployee, atoi(sueldoStr));
+                        }
+                        break;
+                    case 4:
+                        printf("Saliendo del menu\n\n");
+                        break;
+                    default:
+                        break;
+                    }
+                    ok=1;
+                }
+            }
+        }
+    }
+
+    return ok;
 }
 
 /** \brief Baja de empleado
@@ -168,26 +233,24 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
+
     int ok=0;
     int auxId;
     int index=-1;
     char idStr[128];
-    Employee* anEmployee;
     char confirma='n';
     if(pArrayListEmployee!=NULL)
     {
         printf("-----------------------------------------------------------------------------------\n");
         printf("-------------------------------    BAJA EMPLEADO    -------------------------------\n");
         printf("-----------------------------------------------------------------------------------\n\n");
-
         if(printEmployees(pArrayListEmployee))
         {
             getNumberString("Ingrese el ID del empleado a eliminar: ", "Error, intente de nuevo: ", 128, idStr);
             auxId= atoi(idStr);
-            index= searchEmployee(pArrayListEmployee, auxId);
+            index= employee_searchById(pArrayListEmployee, auxId);
             if(index!=-1)
             {
-                anEmployee= ll_get(pArrayListEmployee, index);
                 confirma= getLetter("\nConfirma baja?: ", "Caracter invalido, intente de nuevo: ");
                 if(confirma=='s')
                 {

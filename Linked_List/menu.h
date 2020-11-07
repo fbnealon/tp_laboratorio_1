@@ -8,4 +8,6 @@ int menu(void);
 
 int sortMenu(void);
 
+int modificationMenu(void);
+
 #endif // MENU_H_INCLUDED

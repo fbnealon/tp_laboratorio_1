@@ -33,3 +33,16 @@ int sortMenu(void)
     scanf("%d", &option);
     return option;
 }
+
+int modificationMenu(void)
+{
+    int option;
+    printf("1. Modificar nombre del empleado\n");
+    printf("2. Modificar horas trabajadas\n");
+    printf("3. Modificar sueldo\n");
+    printf("4. Salir\n");
+    printf("\nElija una opcion: ");
+    fflush(stdin);
+    scanf("%d", &option);
+    return option;
+}
