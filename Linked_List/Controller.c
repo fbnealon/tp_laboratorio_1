@@ -342,12 +342,7 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
             }
         }
         fclose(pFile);
-        printf("El archivo fue guardado correctamente\n");
         ok=1;
-    }
-    else
-    {
-        printf("El archivo no pudo guardarse correctamente...\n");
     }
     return ok;
 }

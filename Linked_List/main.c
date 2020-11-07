@@ -96,18 +96,27 @@ int main()
                 break;
             case 8:
                 system("cls");
-                if(!controller_saveAsText("data.csv", listaEmpleados))
+                if(ll_isEmpty(listaEmpleados))
                 {
-                    printf("Archivo en formato texto guardado\n\n");
+                    printf("Lista vacia, no se guardo ningun dato\n\n");
                 }
                 else
                 {
-                    printf("Error al guardar archivo\n\n");
+                    controller_saveAsText("data.csv", listaEmpleados);
+                    printf("Datos guardados\n\n");
                 }
                 break;
             case 9:
                 system("cls");
-                controller_saveAsBinary("data.bin", listaEmpleados);
+                if(ll_isEmpty(listaEmpleados))
+                {
+                    printf("Lista vacia, no se guardo ningun dato\n\n");
+                }
+                else
+                {
+                    controller_saveAsBinary("data.bin", listaEmpleados);
+                    printf("Datos guardados\n\n");
+                }
                 break;
             case 10:
                 ll_deleteLinkedList(listaEmpleados);
