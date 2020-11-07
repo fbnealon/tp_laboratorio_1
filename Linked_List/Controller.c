@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "parser.h"
 #include "Employee.h"
@@ -106,10 +108,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
     int ok=0;
     char confirma='n';
-    char auxNombre[128];
+    char nombreStr[128];
     int id;
-    int horas;
-    int sueldo;
+    char idStr[128];
+    char horasStr[128];
+    char sueldoStr[128];
     Employee* newEmployee=employee_new();
     if(pArrayListEmployee!=NULL)
     {
@@ -118,20 +121,24 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         printf("-----------------------------------------------------------------------------------\n\n");
 
         obtenerId(&id);
-        employee_setId(newEmployee, id);
+        sprintf(idStr, "%d", id);
 
-        getStrings("Ingrese el nombre del empleado: ", "Error, intente de nuevo: ", 128, auxNombre);
-        employee_setNombre(newEmployee, auxNombre);;
 
-        horas=getInt("Ingrese la cantidad de horas trabajadas: ", "Error, intente de nuevo: ", 0, 10000);
-        employee_setHorasTrabajadas(newEmployee, horas);
+        getAlphaString("Ingrese el nombre del empleado: ", "Error, intente de nuevo: ", 128, nombreStr);
+        employee_setNombre(newEmployee, nombreStr);;
 
-        sueldo=getInt("Ingrese el sueldo del empleado: ", "Error, intente de nuevo: ", 0, 999999);
-        employee_setSueldo(newEmployee, sueldo);
 
-        confirma=getLetter("Confirma alta? ", "Caracter invalido, intente de nuevo: ");
+        getNumberString("Ingrese las horas trabajadas: ", "Error, intente de nuevo: ", 128, horasStr);
+
+
+        getNumberString("Ingrese el sueldo del empleado: ", "Error, intente de nuevo: ", 128, sueldoStr);
+
+
+        confirma=getLetter("Confirma alta?: ", "Caracter invalido, intente de nuevo: ");
+
         if(confirma=='s')
         {
+            newEmployee=employee_newParametros(idStr, nombreStr, horasStr, sueldoStr);
             ll_add(pArrayListEmployee, newEmployee);
             actualizarId(id);
         }
@@ -149,17 +156,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    int ok=0;
-    char confirma='n';
-    if(pArrayListEmployee!=NULL)
-    {
-        printf("-----------------------------------------------------------------------------------\n");
-        printf("-------------------------------    BAJA EMPLEADO    -------------------------------\n");
-        printf("-----------------------------------------------------------------------------------\n\n");
-
-
-    }
-    return ok;
+    return 1;
 }
 
 /** \brief Baja de empleado
@@ -171,8 +168,46 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
+    int ok=0;
+    int auxId;
+    int index=-1;
+    char idStr[128];
+    Employee* anEmployee;
+    char confirma='n';
+    if(pArrayListEmployee!=NULL)
+    {
+        printf("-----------------------------------------------------------------------------------\n");
+        printf("-------------------------------    BAJA EMPLEADO    -------------------------------\n");
+        printf("-----------------------------------------------------------------------------------\n\n");
 
-    return 1;
+        if(printEmployees(pArrayListEmployee))
+        {
+            getNumberString("Ingrese el ID del empleado a eliminar: ", "Error, intente de nuevo: ", 128, idStr);
+            auxId= atoi(idStr);
+            index= searchEmployee(pArrayListEmployee, auxId);
+            if(index!=-1)
+            {
+                anEmployee= ll_get(pArrayListEmployee, index);
+                confirma= getLetter("\nConfirma baja?: ", "Caracter invalido, intente de nuevo: ");
+                if(confirma=='s')
+                {
+                    ll_remove(pArrayListEmployee, index);
+                    printf("Empleado dado de baja!!\n\n");
+                }
+                else
+                {
+                    printf("Baja cancelada!\n\n");
+                }
+            }
+            else
+            {
+                printf("No hay empleado con el ID ingresado\n\n");
+            }
+            ok=1;
+        }
+
+    }
+    return ok;
 }
 
 /** \brief Listar empleados
@@ -214,16 +249,16 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         switch(option)
         {
         case 1:
-            ll_sort(pArrayListEmployee, employeeSortById, ASC);
+            ll_sort(pArrayListEmployee, employeeSortById, DESC);
             break;
         case 2:
-            ll_sort(pArrayListEmployee, employeeSortByName, ASC);
+            ll_sort(pArrayListEmployee, employeeSortByName, DESC);
             break;
         case 3:
-            ll_sort(pArrayListEmployee, employeeSortByWorkHours, ASC);
+            ll_sort(pArrayListEmployee, employeeSortByWorkHours, DESC);
             break;
         case 4:
-            ll_sort(pArrayListEmployee, employeeSortBySalary, ASC);
+            ll_sort(pArrayListEmployee, employeeSortBySalary, DESC);
             break;
         case 5:
             printf("Saliendo\n\n");

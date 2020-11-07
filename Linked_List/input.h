@@ -57,5 +57,8 @@ void getStrings(char message[], char errorMessage[], int len, char str[]);
 
 void firstUpper(char str[]);
 
+void getAlphaString(char message[], char errorMessage[], int len, char str[]);
+
+void getNumberString(char message[], char errorMessage[], int len, char nums[]);
 
 #endif // GETFUNCTIONS_H_INCLUDED

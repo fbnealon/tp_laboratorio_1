@@ -74,5 +74,60 @@ void getStrings(char message[], char errorMessage[], int len, char str[])
 
 void firstUpper(char str[])
 {
-    str[0]= toupper(str[0]);
+    int i=0;
+    while(str[i]!='\0')
+    {
+        str[0]= toupper(str[0]);
+        if(str[i]==' ')
+        {
+            str[i+1]=toupper(str[i+1]);
+        }
+        i++;
+    }
+
+}
+
+void getNumberString(char message[], char errorMessage[], int len, char nums[])
+{
+    char auxStr[len];
+    int i=0;
+    printf("%s", message);
+    fflush(stdin);
+    gets(auxStr);
+
+    while(auxStr[i]!='\0')
+    {
+        if(auxStr[i]<'0'||auxStr[i]>'9')
+        {
+            printf("%s", errorMessage);
+            fflush(stdin);
+            gets(auxStr);
+            i=0;
+        }
+        i++;
+    }
+    strcpy(nums, auxStr);
+}
+
+void getAlphaString(char message[], char errorMessage[], int len, char str[])
+{
+    char auxStr[len];
+    int i=0;
+    printf("%s", message);
+    fflush(stdin);
+    gets(auxStr);
+
+    while(auxStr[i]!= '\0')
+    {
+        if((auxStr[i]!=' ') && (auxStr[i]<'a'||auxStr[i]>'z') && (auxStr[i]<'A'||auxStr[i]>'Z'))
+        {
+            printf("%s", errorMessage);
+            fflush(stdin);
+            gets(auxStr);
+            i=0;
+        }
+        i++;
+    }
+    firstUpper(auxStr);
+    strcpy(str, auxStr);
 }

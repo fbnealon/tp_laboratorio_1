@@ -156,6 +156,7 @@ int printEmployees(LinkedList* lista)
         if(!f)
         {
             printf("No hay empleados\n\n");
+            ok=0;
         }
         printf("\n");
     }

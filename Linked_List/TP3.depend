@@ -205,9 +205,11 @@
 	<string.h>
 	<ctype.h>
 
-1604686946 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\controller.c
+1604707521 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\controller.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
+	<string.h>
 	"LinkedList.h"
 	"parser.h"
 	"Employee.h"
@@ -225,22 +227,22 @@
 	<stdio.h>
 	<stdlib.h>
 
-1602680814 d:\federico\documents\progra i\tp_laboratorio_1\linked_list\input.h
+1604704102 d:\federico\documents\progra i\tp_laboratorio_1\linked_list\input.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 
-1604685195 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\employee.c
+1604707567 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Employee.h"
 
-1604671961 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\input.c
+1604704531 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\input.c
 	"input.h"
 
-1604687251 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\main.c
+1604707396 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
