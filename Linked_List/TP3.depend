@@ -205,7 +205,7 @@
 	<string.h>
 	<ctype.h>
 
-1604707521 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\controller.c
+1604707682 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -242,7 +242,7 @@
 1604704531 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\input.c
 	"input.h"
 
-1604707396 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\main.c
+1604707964 source:d:\federico\documents\progra i\tp_laboratorio_1\linked_list\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
