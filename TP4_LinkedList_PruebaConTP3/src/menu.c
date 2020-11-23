@@ -13,9 +13,11 @@ int menu(void)
     printf("5. Baja de empleado\n");
     printf("6. Listar empleados\n");
     printf("7. Ordenar empleados\n");
-    printf("8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-    printf("9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
-    printf("10. Salir\n");
+    printf("8. Listar empleados que trabajan mas de 70 horas\n");
+    printf("9. Listar empleados que cobran mas de 30000\n");
+    printf("10. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
+    printf("11. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
+    printf("12. Salir\n");
     printf("\nElija una opcion: ");
     fflush(stdin);
     scanf("%d", &option);

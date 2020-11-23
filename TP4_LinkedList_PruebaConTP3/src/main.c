@@ -26,6 +26,8 @@ int main()
 {
     int option;
     int primera=1;
+    LinkedList* empleadosQueTrabajanMasDe70Horas=NULL;
+    LinkedList* empleadosQueCobranMasDe30000=NULL;
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
         option=menu();
@@ -96,6 +98,26 @@ int main()
                 break;
             case 8:
                 system("cls");
+                printf("-----------------Lista de empleados que trabajan mas de 70 horas-----------------\n\n\n");
+                if(ll_len(listaEmpleados)!=0)
+                {
+                    empleadosQueTrabajanMasDe70Horas=ll_filter(listaEmpleados, employee_filterByWorkHours);
+                    employee_printAll(empleadosQueTrabajanMasDe70Horas);
+                    free(empleadosQueTrabajanMasDe70Horas);
+                }
+                break;
+            case 9:
+                system("cls");
+                printf("-----------------Lista de empleados que cobran mas de 30000 pesos-----------------\n\n\n");
+                if(ll_len(listaEmpleados)!=0)
+                {
+                    empleadosQueCobranMasDe30000= ll_filter(listaEmpleados, employee_filterBySalary);
+                    employee_printAll(empleadosQueCobranMasDe30000);
+                    free(empleadosQueCobranMasDe30000);
+                }
+                break;
+            case 10:
+                system("cls");
                 if(ll_isEmpty(listaEmpleados))
                 {
                     printf("Lista vacia, no se guardo ningun dato\n\n");
@@ -106,7 +128,7 @@ int main()
                     printf("Datos guardados\n\n");
                 }
                 break;
-            case 9:
+            case 11:
                 system("cls");
                 if(ll_isEmpty(listaEmpleados))
                 {
@@ -118,12 +140,15 @@ int main()
                     printf("Datos guardados\n\n");
                 }
                 break;
-            case 10:
-                ll_deleteLinkedList(listaEmpleados);
+            case 12:
+                if(!ll_deleteLinkedList(listaEmpleados))
+                {
+                    printf("LinkedList eliminada\n");
+                }
                 break;
         }
         system("pause");
         system("cls");
-    }while(option != 10);
+    }while(option != 12);
     return 0;
 }

@@ -179,4 +179,15 @@ int employeeSortBySalary(void* empleadoA, void* empleadoB);
  */
 int employee_searchById(LinkedList* lista, int id);
 
+
+/** \brief Devuelve la lista de empleados que trabajan mas que las horas indicadas por parametro
+ *
+ * \param employee void*
+ * \return int
+ *
+ */
+int employee_filterByWorkHours(void* employee);
+
+int employee_filterBySalary(void* employee);
+
 #endif // employee_H_INCLUDED

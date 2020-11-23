@@ -283,3 +283,34 @@ int employee_searchById(LinkedList* lista, int id)
     }
     return index;
 }
+
+int employee_filterByWorkHours(void* employee)
+{
+    int ok=0;
+    Employee* emp=NULL;
+    if(employee!=NULL)
+    {
+        emp=(Employee*) employee;
+        if(emp->horasTrabajadas>70)
+        {
+            ok=1;
+        }
+    }
+    return ok;
+}
+
+int employee_filterBySalary(void* employee)
+{
+    int ok=0;
+    Employee* emp=NULL;
+    if(employee!=NULL)
+    {
+        emp=(Employee*) employee;
+        if(emp->sueldo>30000)
+        {
+            ok=1;
+        }
+    }
+    return ok;
+}
+
