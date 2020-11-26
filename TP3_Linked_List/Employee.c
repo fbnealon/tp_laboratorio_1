@@ -35,7 +35,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 }
 void employee_delete(Employee* this)
 {
-        free(this);
+    free(this);
 }
 
 int employee_setId(Employee* this, int id)
@@ -144,7 +144,7 @@ int printEmployees(LinkedList* lista)
         ok=1;
         printf("%5s\t%30s\t%16s\t%10s\n", "ID", "NOMBRE", "HORAS TRABAJADAS", "SUELDO");
         printf("--------------------------------------------------------------------------\n");
-        for(int i=0;i<tam;i++)
+        for(int i=0; i<tam; i++)
         {
             auxEmployee= (Employee*)ll_get(lista, i);
             if(auxEmployee!=NULL)
@@ -266,7 +266,7 @@ int employee_searchById(LinkedList* lista, int id)
     int tam=ll_len(lista);
     if(lista!=NULL)
     {
-        for(int i=0;i<tam;i++)
+        for(int i=0; i<tam; i++)
         {
             auxEmployee=(Employee*) ll_get(lista, i);
             if(auxEmployee!=NULL && id==auxEmployee->id)
